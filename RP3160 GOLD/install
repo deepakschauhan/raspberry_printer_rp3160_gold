@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Installs zj-58 driver
+# Tested as working under Ubuntu 14.04
+
+/etc/init.d/cups stop
+cp rastertorp3160 /usr/lib/cups/filter/
+mkdir -p /usr/share/cups/model/RP3160
+cp rp3160.ppd /usr/share/cups/model/RP3160/
+cd /usr/lib/cups/filter
+chmod 755 rastertorp3160
+chown root:root rastertorp3160
+cd -
+/etc/init.d/cups start
